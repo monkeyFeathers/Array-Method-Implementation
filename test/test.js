@@ -66,6 +66,12 @@ describe('BombArray', function() {
       expect(bombArray.frequency2()).to.deep.eql([{e:5}]);
       done();
     });
+
+    it('should return more than one character if there is a tie', function(done) {
+      bombArray.items = ['On', 'the', 'other', 'hand', 'we', 'denounce', 'n'];
+      expect(bombArray.frequency2()).to.deep.eql([{n:5},{e:5}]);
+      done();
+    });
   });
 
 });
