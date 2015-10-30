@@ -47,13 +47,13 @@ Given b.items is an array of words, frequency2 will return an objects with the m
 
 `b.items = ['On', 'the', 'other', 'hand', 'we', 'denounce'];
 b.frequency2();
-// {e:5}`
+// {char:'e', freq:5}`
 
 If there are more than one characters with the highest frequency it will return an array.
 
 `b.items = ['On', 'the', 'other', 'hand', 'we', 'denounce', ','];
 b.frequency2();
-// [{n:5}, {e:5}]`
+// [{char:'n', freq:5}, {char:'e', freq:5}]`
 
 ### License
 MIT

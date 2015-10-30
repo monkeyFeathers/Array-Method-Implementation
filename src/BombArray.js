@@ -82,7 +82,8 @@ BombArray.prototype = {
     var store = [];
     for (var letter in obj) {
       var r = {};
-      r[letter] = obj[letter];
+      r.char = letter;
+      r.freq = obj[letter];
       if (obj[letter] > max) {
         max = obj[letter];
         store = [];
