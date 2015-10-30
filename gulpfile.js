@@ -21,7 +21,7 @@ gulp.task("tests", function(){
 });
 
 gulp.task("jscs", function(){
-  return gulp.src(paths.tests)
+  return gulp.src(paths.src)
     .pipe(jscs())
     .pipe(jscs.reporter());
 });
