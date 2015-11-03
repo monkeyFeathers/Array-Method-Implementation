@@ -64,37 +64,68 @@ BombArray.prototype = {
   },
 
   frequency2: function() {
-    var items = this.items;
     var chars = [];
-    var obj = {};
-    items.forEach(function(item) {
+    var obj;
+    var store;
+
+    this.items.forEach(function(item) {
       item.split('').forEach(function(char) {
-        var lChar = char.toLowerCase();
-        if (obj[lChar]) {
-          obj[lChar]++;
-        } else {
-          obj[lChar] = 1;
-        }
+        chars.push(char.toLowerCase());
       });
     });
 
-    var max = 0;
-    var store = [];
-    for (var letter in obj) {
-      var r = {};
-      r.char = letter;
-      r.freq = obj[letter];
-      if (obj[letter] > max) {
-        max = obj[letter];
-        store = [];
-        store.push(r);
-      } else if (obj[letter] === max) {
-        store.push(r);
-      }
-    }
+    obj = this.mapToCounter(chars);
+    store = this.count(obj);
 
     return store;
   },
+
+  mapToCounter: function(chars) {
+    var obj = {};
+    chars.forEach(function(char){
+      if (obj[char]) {
+        obj[char]++;
+      } else {
+        obj[char] = 1;
+      }
+    })
+    return obj;
+  },
+
+  count: function(countObj) {
+    var store = [];
+    var max = 0;
+    for (var letter in countObj) {
+      var r = {};
+      r.char = letter;
+      r.freq = countObj[letter];
+      if (countObj[letter] > max) {
+        max = countObj[letter];
+        store = [];
+        store.push(r);
+      } else if (countObj[letter] === max) {
+        store.push(r);
+      }
+    }
+    return store;
+  },
+
+  freq2: function() {
+    var store;
+    var obj;
+    var chars = this.items.map(function(item) {
+      var bombItem = new BombArray(item.toLowerCase().split(''));
+      return bombItem.unique();
+    });
+    chars = chars.reduce(function(a, b) {
+      return a.concat(b);
+    });
+
+    obj = this.mapToCounter(chars);
+    store = this.count(obj);
+
+    return store;
+  }
 
 };
 

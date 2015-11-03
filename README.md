@@ -2,17 +2,15 @@
 
 BombArray wraps a native javascript array object and then reimplements the array prototype methods "push", "pop", "shift", and "unshift" as well as "unique" and "frequency2".
 
-### Installation
+## Installation
 
-git clone
+`npm install --save-dev git://github.com/monkeyFeathers/Array-Method-Implementation.git`
 
-npm install
-
-### Usage
+## Usage
 
 Import the object
 
-`var BombArray = require('./src/bombArray');`
+`var BombArray = require('bombArray');`
 
 Create an instance
 
@@ -43,7 +41,7 @@ Unique will return a new array with all duplicates removed
 b.unique();
 // [1, 2, 5, 99, 0, 6]`
 
-Given b.items is an array of words, frequency2 will return an objects with the most frequent character and the frequency.
+Given b.items is an array of words, frequency2 will return an object with the most frequent character and the frequency.
 
 `b.items = ['On', 'the', 'other', 'hand', 'we', 'denounce'];
 b.frequency2();
@@ -55,5 +53,17 @@ If there are more than one characters with the highest frequency it will return 
 b.frequency2();
 // [{char:'n', freq:5}, {char:'e', freq:5}]`
 
-### License
+freq2 will return an object with the most frequent character and the frequency, counting characters only once per word.
+
+`b.items = ['On', 'the', 'other', 'hand', 'we', 'denounce'];
+b.frequency2();
+// {char:'e', freq:4}`
+
+If there are more than one characters with the highest frequency it will return an array.
+
+`b.items = ['On', 'the', 'other', 'hand', 'we', 'denounce', ','];
+b.frequency2();
+// [{char:'n', freq:4}, {char:'e', freq:4}]`
+
+## License
 MIT

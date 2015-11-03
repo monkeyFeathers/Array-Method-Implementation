@@ -4,7 +4,7 @@ var chai = require('chai');
 var expect = chai.expect;
 var should = chai.should;
 var spy = require('chai-spies');
-var BombArray = require('../src/BombArray');
+var BombArray = require('../BombArray');
 
 describe('BombArray', function() {
   var bombArray = new BombArray([1, 2, 3, 4]);
@@ -70,6 +70,21 @@ describe('BombArray', function() {
     it('should return more than one character if there is a tie', function(done) {
       bombArray.items = ['On', 'the', 'other', 'hand', 'we', 'denounce', 'n'];
       expect(bombArray.frequency2()).to.deep.eql([{char:'n',freq:5},{char:'e',freq:5}]);
+      done();
+    });
+
+  });
+
+  describe('#freq2', function() {
+    it('the most frequent character among all the words (counting a letter only once per word)', function(done) {
+      bombArray.items = ['On', 'the', 'other', 'hand', 'we', 'denounce'];
+      expect(bombArray.freq2()).to.deep.eql([{char:'e', freq:4}]);
+      done();
+    });
+
+    it('should return more than one character if there is a tie', function(done) {
+      bombArray.items = ['On', 'the', 'other', 'hand', 'we', 'denounce', 'n'];
+      expect(bombArray.freq2()).to.deep.eql([{char:'n',freq:4},{char:'e',freq:4}]);
       done();
     });
 
