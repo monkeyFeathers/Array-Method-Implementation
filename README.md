@@ -68,7 +68,7 @@ freq2 will return an object with the most frequent character and the frequency, 
 
 `b.items = ['On', 'the', 'other', 'hand', 'we', 'denounce'];`
 
-`b.frequency2();`
+`b.freq2();`
 
 `// {char:'e', freq:4}`
 
@@ -76,7 +76,7 @@ If there are more than one characters with the highest frequency it will return 
 
 `b.items = ['On', 'the', 'other', 'hand', 'we', 'denounce', ','];`
 
-`b.frequency2();`
+`b.freq2();`
 
 `// [{char:'n', freq:4}, {char:'e', freq:4}]`
 
